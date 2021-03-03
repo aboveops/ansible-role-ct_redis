@@ -1,0 +1,25 @@
+---
+- name: "{{ ct_redis_task_prefix }} Create data directory"
+  file:
+    path: "{{ ct_redis_data_directory }}"
+    state: directory
+  when: ct_redis_data_directory is defined
+- name: "{{ ct_redis_task_prefix }} Place configuration file"
+  template:
+    src: "{{ ct_redis_config_template }}"
+    dest: "{{ ct_redis_config_file }}"
+  when: ct_redis_config_template is defined and ct_redis_config_file is defined
+- name: "{{ ct_redis_task_prefix }} Create container"
+  docker_container:
+    name: "{{ ct_redis_ct_name }}"
+    image: "{{ ct_redis_ct_image }}:{{ ct_redis_ct_version }}"
+    command: "{{ ct_redis_ct_command }}"
+    hostname: "{{ ct_redis_ct_hostname }}"
+    ports:
+      - "{{ ct_redis_ct_bindhost }}:{{ ct_redis_ct_bindport }}:{{ ct_redis_ct_listenport }}"
+    recreate: "{{ ct_redis_ct_recreate }}"
+    restart: "{{ ct_redis_ct_restart }}"
+    restart_policy: "{{ ct_redis_ct_restart_policy }}"
+    state: "{{ ct_redis_ct_state }}"
+    memory: "{{ ct_redis_ct_memory }}"
+    volumes: "{{ ct_redis_mount_all }}"
