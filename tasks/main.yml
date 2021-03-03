@@ -3,11 +3,13 @@
   file:
     path: "{{ ct_redis_data_directory }}"
     state: directory
+    mode: '0755'
   when: ct_redis_data_directory is defined
 - name: "{{ ct_redis_task_prefix }} Place configuration file"
   template:
     src: "{{ ct_redis_config_template }}"
     dest: "{{ ct_redis_config_file }}"
+    mode: '0644'
   when: ct_redis_config_template is defined and ct_redis_config_file is defined
 - name: "{{ ct_redis_task_prefix }} Create container"
   docker_container:
