@@ -41,7 +41,7 @@ ct_redis_mount_data: "{{ [] + [ct_redis_data_directory + ':' + ct_redis_ct_data_
 ct_redis_mount_config: "{{ [] + [ct_redis_config_file + ':' + ct_redis_ct_config_file + ':ro'] if ct_redis_config_file is defined else [] }}"
 # Group all mounts:
 ct_redis_mount_all: "{{ ct_redis_mount_data + ct_redis_mount_config }}"
-
+# 
 # Redis host settings
 #
 # ct_redis_data_directory: /opt/redis-data
@@ -58,5 +58,4 @@ ct_redis_mount_all: "{{ ct_redis_mount_data + ct_redis_mount_config }}"
 # file at target hosts and will mount it to container's config file
 # located at {{ ct_redis_ct_config_file }}. This variable requires 
 # variable {{ ct_redis_config_template }} to be defined.
-
-
+...

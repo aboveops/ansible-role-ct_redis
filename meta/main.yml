@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Valentin Gostev
   role_name: ct_redis
@@ -12,3 +13,4 @@ galaxy_info:
   galaxy_tags: 
     - redis
 dependencies: []
+...
