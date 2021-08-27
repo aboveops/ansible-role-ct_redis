@@ -1,3 +1,7 @@
+# Deprecation Notice
+This repository is deprecated in favor of https://github.com/almaops/ansible-role-ct_redis  
+Please use role [almaops.ct_redis](https://galaxy.ansible.com/almaops/ct_redis) instead
+
 Role Name
 =========
 
